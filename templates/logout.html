@@ -1,0 +1,103 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<title>Logout Page</title>
+<style>
+    /* Reset CSS */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/970/842/small_2x/technology-digital-data-network-connection-and-cyber-security-concept-social-network-connections-global-network-5g-high-speed-internet-connection-data-analysis-abstract-background-photo.jpg');
+    
+            background-repeat: repeat;
+    }
+
+    .card {
+        height: 200px;
+    margin-top:200px;
+    text-align:center;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5) !important;
+    }
+
+    h2 {
+        color: #4b89ff;
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 20px;
+        color:white;
+    }
+    h1{
+        color:white;
+    }
+    button {
+        background-color: darkblue;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: blue;
+    }
+</style>
+</head>
+<body>
+    <center><b><h2>COMMUNITY BASED REPORTING AND MONITORING TOOL</h2></b></center>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-header"><center>Logout</center></h2>
+                        <div class="form-group">
+                            <p>You have been successfully logged out.</p>
+                            <button onclick="redirectToLogin()">Login Again</button>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br>
+<script>
+    function redirectToLogin() {
+        // Redirect to the login page
+        window.location.href = "/ ";
+    }
+</script>
+<center><h1>Your Safety is our Only Concern.. &#x1F499;</h1></center>
+</body>
+</html> -->
+
+<!-- logout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+</head>
+<body>
+    <h1>You have been successfully logged out.</h1>
+    <p>Thank you for using our service.</p>
+    <!-- Optionally, you can provide a link to redirect users to the main page -->
+    <a href="{% url 'main' %}">Return to Main Page</a>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pie Chart</title>
+    <style>
+        .navbar {
+            background-color: #4b89ff;
+            overflow: hidden;
+        }
+    
+        .navbar a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    
+        .navbar a:hover {
+            background-color: #1e88e5;
+        }
+    
+    </style>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/admindashboard">Dashboard</a>
+        <a href="/adminreports">Reports</a>
+        <a href="/pie_chart">Analysis</a>
+        <a href="/delete_user">Users Deletion</a>
+        <a href="/logout">Log Out</a>
+    </div>
+    <canvas id="pieChart"></canvas>
+
+    <script>
+        // Retrieve chart data from the context passed by Django
+        var chartData = JSON.parse("{{ chart_data|escapejs }}");
+
+        // Prepare data for Chart.js
+        var labels = Object.keys(chartData);
+        var data = Object.values(chartData);
+
+        // Create a new pie chart
+        var ctx = document.getElementById('pieChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 206, 86, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(153, 102, 255, 0.5)',
+                        'rgba(255, 159, 64, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            
+            options: {
+                title: {
+                    display: true,
+                    text: 'Incidents per College'
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                },
+                tooltips: {
+                    enabled: true,
+                    mode: 'single'
+                },
+                responsive: true,
+                aspectRatio: 1.5,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

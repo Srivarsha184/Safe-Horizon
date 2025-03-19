@@ -1,0 +1,20 @@
+<!-- templates/base.html or include in specific templates like userlogin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- other head elements -->
+</head>
+<body>
+    <!-- Message Display -->
+    {% if messages %}
+        <div class="container mt-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Your content -->
+</body>
+</html>

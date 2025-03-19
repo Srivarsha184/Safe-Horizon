@@ -1,0 +1,166 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('background.png'); /* Replace with your admin background image */
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    width: 400px; /* Adjusted for a larger login box */
+    padding: 40px; /* More padding for a larger box */
+    background: rgba(255, 255, 255, 0.8); /* Slightly more opaque for better readability */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    margin-bottom: 15px; /* Increased spacing */
+    padding: 15px; /* Larger input fields */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .login-button {
+    background-color: #007bff; /* Admin blue */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .login-button:hover {
+    background-color: #2f4052;
+  }
+  .back-button {
+    background-color: #1b76c6; /* Different color for back button */
+    margin-top: 10px; /* Spacing between login and back buttons */
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .back-button:hover{
+    background-color:#003671
+  }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <h2>Admin Login</h2>
+  <form id="admin-login-form">
+    <input type="text" id="admin-id" name="admin-id" placeholder="Admin ID" required>
+    <input type="password" id="admin-password" name="admin-password" placeholder="Password" required>
+    <button type="submit" class="login-button">Login</button>
+    <button type="button" class="back-button" onclick="goBack()">Back</button>
+
+  </form>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const adminLoginForm = document.getElementById('admin-login-form');
+    adminLoginForm.onsubmit = function(event) {
+      const password = document.getElementById('admin-password').value;
+      if (password.length < 6) {
+        alert('Password must contain at least 6 characters.');
+        event.preventDefault(); // Prevent form from submitting
+      }
+    };
+  });
+  function goBack() {
+    window.location.href = 'login.html'; // Replace with the path to your actual login page
+  }
+</script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+            color: white;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/006/970/842/small_2x/technology-digital-data-network-connection-and-cyber-security-concept-social-network-connections-global-network-5g-high-speed-internet-connection-data-analysis-abstract-background-photo.jpg');
+            background-repeat: repeat;
+            height: 100%;
+            font-family: 'Numans', sans-serif;
+        }
+        .card {
+            height: 400px;
+            margin-top: 200px;
+            width: 400px;
+            background-color: rgba(0,0,0,0.5) !important;
+        }
+        .btn-primary {
+            background-color: darkblue;
+            border-color: black;
+        }
+        .btn-primary:hover {
+            background-color: blue;
+            border-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <center><b><h2>COMMUNITY BASED REPORTING AND MONITORING TOOL</h2></b></center>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-header text-center">Admin Login</h2>
+                        <div class="form-group">
+                            <form method="post">
+                                {% csrf_token %}
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-danger mt-3">{{ message }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                                <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username" placeholder="Admin name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

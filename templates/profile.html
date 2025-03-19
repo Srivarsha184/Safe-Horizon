@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #b3a5a5;
+    padding: 20px;
+  }
+  .profile-container {
+    background-color: #817e7e;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: auto;
+  }
+  .profile-field {
+    margin-bottom: 10px;
+  }
+  .profile-field label {
+    font-weight: bold;
+  }
+  .profile-field input, .profile-field select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .profile-field input[disabled], .profile-field select[disabled] {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+  }
+  .button-container {
+    text-align: right;
+    margin-top: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .edit-button {
+    background-color: #ffc107;
+    color: #fff;
+  }
+  .save-button {
+    background-color: #28a745;
+    color: #fff;
+    display: none;
+  }
+  .back-button {
+    background-color: #6c757d;
+    color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<div class="profile-container">
+  <div class="profile-field">
+    <label for="username">Username:</label>
+    <input type="text" id="username" value="{{ user_profile.user.username }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="name">Name:</label>
+    <input type="text" id="name" value="{{ user_profile.name }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="email">Email:</label>
+    <input type="email" id="email" value="{{ user_profile.user.email }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" value="{{ user_profile.phone }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="clgname">College Name:</label>
+    <input type="text" id="clgname" value="{{ user_profile.clgname }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="clgid">College ID:</label>
+    <input type="text" id="clgid" value="{{ user_profile.clgid }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="clgaddress">College Address:</label>
+    <input type="text" id="clgaddress" value="{{ user_profile.clgaddress }}" disabled>
+  </div>
+  <div class="profile-field">
+    <label for="qualification">Qualification:</label>
+    <select id="qualification" disabled>
+      <option value="{{ user_profile.qualification }}" selected>{{ user_profile.qualification }}</option>
+      <option value="UG">Under Graduation</option>
+      <option value="PG">Post Graduation</option>
+    </select>
+  </div>
+  <div class="profile-field">
+    <label for="gradyear">Year of Graduation:</label>
+    <select id="gradyear" disabled>
+      <option value="{{ user_profile.gradyear }}" selected>{{ user_profile.gradyear }}</option>
+      {% for year in grad_years %}
+        <option value="{{ year }}">{{ year }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="profile-field">
+    <label for="roll">Student Roll Number:</label>
+    <input type="text" id="roll" value="{{ user_profile.roll }}" disabled>
+  </div>
+  <div class="button-container">
+    <button class="back-button" onclick="location.href='{% url 'dashboard' %}'">Back</button>
+    <button class="edit-button" onclick="editProfile()">Edit</button>
+    <button class="save-button" onclick="saveProfile()">Save</button>
+  </div>
+</div>
+
+<script>
+  function editProfile() {
+    document.querySelectorAll('.profile-field input, .profile-field select').forEach(function(element) {
+      element.disabled = false;
+    });
+    document.querySelector('.edit-button').style.display = 'none';
+    document.querySelector('.save-button').style.display = 'inline-block';
+  }
+
+  function saveProfile() {
+    alert('Profile saved successfully!');
+    document.querySelectorAll('.profile-field input, .profile-field select').forEach(function(element) {
+      element.disabled = true;
+    });
+    document.querySelector('.edit-button').style.display = 'inline-block';
+    document.querySelector('.save-button').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Dashboard</title>
+<style>
+    /* Reset CSS */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        background-image: url('https://ntrepidcorp.com/wp-content/uploads/2023/02/BlogImagery-Feb2023-400x300.png');
+        background-repeat: repeat;
+    }
+
+    /* Navigation bar */
+    .navbar {
+        background-color: #4b89ff;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar a {
+        float: left;
+        display: block;
+        color: #fff;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        background-color: #1e88e5;
+    }
+
+    .navbar a.active {
+        background-color: #1e88e5;
+    }
+
+    /* Page content */
+    .container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    /* Dashboard cards */
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        color: #4b89ff;
+        margin-bottom: 20px;
+    }
+
+    h3 {
+        color: #4b89ff;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #666;
+        font-size: 1.1em;
+        margin-top: 10px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    table th, table td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #4b89ff;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    table tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    /* Button styles */
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #4b89ff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #1e88e5;
+    }
+</style>
+</head>
+<body>
+
+<!-- Navigation bar -->
+<div class="navbar">
+    <a href="/admindashboard" class="active">Dashboard</a>
+    <a href="/adminreports">Reports</a>
+    <a href="/delete_user">Users Deletion</a>
+    <a href="/logout">Log Out</a>
+</div>
+
+<div class="container">
+  <h2>Dashboard</h2>
+  <!-- Total Users Card -->
+  <div class="card">
+      <h3>Total Users</h3>
+      <p>{{ user_profiles.count }}</p>
+  </div>
+
+  <!-- Users Details Card -->
+  <div class="card">
+      <h3>Users Details</h3>
+      <table>
+          <thead>
+              <tr>
+                  <th>College ID</th>
+                  <th>Roll Number</th>
+                  <th>Username</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for profile in user_profiles %}
+              <tr>
+                  <td>{{ profile.clgid }}</td>
+                  <td>{{ profile.roll }}</td>
+                  <td>{{ profile.user.username }}</td>
+                  <td>{{ profile.name }}</td>
+                  <td>{{ profile.user.email }}</td>
+                  <td>{{ profile.phone }}</td>
+              </tr>
+              {% endfor %}
+              
+          </tbody>
+      </table>
+  </div>
+</div>
+
+</body>
+</html>

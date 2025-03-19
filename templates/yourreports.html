@@ -1,0 +1,129 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Reports</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+  .reports-container {
+    background-color: #dfc7c7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+  }
+  .report {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .report:last-child {
+    border-bottom: none;
+  }
+  .report-title {
+    font-weight: bold;
+    color: #007bff;
+  }
+  .report-details {
+    margin-bottom: 5px;
+  }
+  .back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3971a1;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="reports-container">
+  <h2>Your Reported Incidents</h2>
+  <div class="report">
+    <div class="report-title">Incident on 2023-01-01</div>
+    <div class="report-details">Time: 14:30</div>
+    <div class="report-details">Place: Parking Area</div>
+    <div class="report-details">Description: Harassment-The perpetrator on a motorbike has verbally insulted the victim.</div>
+    <div class="report-details">Victim Injured: No</div>
+    <div class="report-details">Witness Present: Yes</div>
+  </div>
+  <button onclick="location.href='dashboard.html'" class="back-button">Back to Dashboard</button>
+
+</div>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Reports</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    padding: 20px;
+  }
+  .reports-container {
+    background-color: #dfc7c7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: auto;
+  }
+  .report {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .report:last-child {
+    border-bottom: none;
+  }
+  .report-title {
+    font-weight: bold;
+    color: #007bff;
+  }
+  .report-details {
+    margin-bottom: 5px;
+  }
+  .back-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #3971a1;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="reports-container">
+  <h2>Your Reported Incidents</h2>
+  {% for incident in incidents %}
+  <div class="report">
+    <div class="report-title">Incident on {{ incident.date }}</div>
+    <div class="report-details">Place: {{ incident.location }}</div>
+    <div class="report-details">Description: {{ incident.description }}</div>
+    <div class="report-details">Victim Injured: {{ incident.victim_injury }}</div>
+    <div class="report-details">Witness Present: {{ incident.witness_present }}</div>
+  </div>
+  {% endfor %}
+  <button class="back-button" onclick="location.href='{% url 'dashboard' %}'">Back Dashboard</button>
+</div>
+</body>
+</html>

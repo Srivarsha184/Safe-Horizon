@@ -1,0 +1,201 @@
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safe Harbour</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: rgba(255, 160, 160, 0.8); 
+
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .login-container {
+    max-width: 300px;
+    padding: 20px;
+    background: rgba(174, 151, 151, 0.8); 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  input {
+    margin-bottom: 10px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .login-button {
+    background-color: #419a41;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .login-button:hover {
+    background-color: #014c01;
+  }
+  .admin-signup {
+    text-align: center;
+    margin-top: 10px;
+  }
+  a {
+    color: #099409;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+<div class="login-container">
+  <h2>Login</h2>
+  <form action="dashboard/" method="post">
+    {% csrf_token %}
+    <input type="email" id="user-id" name="email_id" placeholder="Email" required>
+    <input type="password" id="password" name="password" placeholder="Password" minlength="6" required>
+    <button type="submit" class="login-button">Login</button>
+    <div class="admin-signup">
+      <a href="adminlogin.html">Admin?</a> | <a href="signup.html">Sign Up</a>
+    </div>
+  </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const loginForm = document.querySelector('form');
+      loginForm.onsubmit = function(event) {
+        const password = document.getElementById('password').value;
+        if (password.length < 6) {
+          alert('Password must contain at least 6 characters.');
+          event.preventDefault(); 
+        }
+      };
+    });
+</script>  
+</body>
+</html>
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Login Page</title>
+     <!-- Bootstrap CSS -->
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+     <style>
+         body {
+             background-color: white;
+             color: white;
+             background-image: url('https://www.groovypost.com/wp-content/uploads/2023/09/security-iphone-android-featured.jpg');
+             background-repeat: repeat;
+             height: 100%;
+             font-family: 'Numans', sans-serif;
+         }
+         .card {
+             height: 300px;
+             margin-top: 200px;
+             width: 400px;
+             background-color: rgba(0,0,0,0.5) !important;
+         }
+         .btn-primary {
+             background-color: darkblue;
+             border-color: black;
+         }
+         .btn-primary:hover {
+             background-color: blue;
+             border-color: blue;
+         }
+     </style>
+ </head>
+ <body>
+       <center><b><h2>COMMUNITY BASED REPORTING AND MONITORING TOOL</h2></b></center>
+
+     <div class="container">
+         <div class="row justify-content-center">
+             <div class="col-md-6">
+                 <div class="card shadow-sm">
+                     <div class="card-body">
+                         <h2 class="card-header"><center>User Login</center></h2>
+                         <form id="login" method="POST" action="{% url 'user_login' %}">
+                             {% csrf_token %}
+                             {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                             <div class="form-group">
+                                 <input type="text" class="form-control" id="username" name="username" placeholder="Username" required pattern="[A-Za-z0-9]+">
+                                 <div class="invalid-feedback">Username should only contain letters and numbers.</div>
+                             </div>
+                             <div class="form-group">
+                                 <input type="password" class="form-control" id="password" name="password" placeholder="Password" required minlength="8">
+                                 <div class="invalid-feedback">Invalid username or password.</div>
+                             </div>
+                             <button type="submit" class="btn btn-primary btn-block">Login</button>
+                         </form>
+                         <p class="text-center">Don't have an account? <a href="{% url 'signup' %}">SignUp</a>.</p>
+                         <div id="error-message" class="alert alert-danger mt-3 d-none"></div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <script>
+     const loginForm = document.getElementById('loginForm');
+ const usernameInput = document.getElementById('username');
+ const passwordInput = document.getElementById('password');
+ const errorMessageElement = document.getElementById('errorMessage');
+ 
+ const users = [
+   { username: 'user1', password: 'password1' },
+   { username: 'user2', password: 'password2' },
+   // Add more users as needed
+ ];
+ 
+ loginForm.addEventListener('submit', (event) => {
+   event.preventDefault();
+ 
+   const enteredUsername = usernameInput.value.trim();
+   const enteredPassword = passwordInput.value.trim();
+ 
+   let isValidCredentials = false;
+ 
+   for (const user of users) {
+     if (user.username === enteredUsername && user.password === enteredPassword) {
+       isValidCredentials = true;
+       break;
+     }
+   }
+ 
+   if (!isValidCredentials) {
+     errorMessageElement.innerHTML = 'Invalid username or password.';
+   } else {
+     errorMessageElement.innerHTML = '/dashboard';
+     // Redirect to the dashboard or another page after successful login
+   }
+ });
+ </script>
+     <!-- Bootstrap JS and dependencies -->
+     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+     

@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #cdc5c5c1;
+  }
+  .dashboard-container {
+    text-align: center;
+    width: 100%;
+  }
+  .dashboard-button {
+    display: block;
+    width: 90%; /* Adjusted for screen width */
+    padding: 40px; /* Increased padding for larger buttons */
+    margin: 20px auto;
+    font-size: 3em; /* Larger font size for text on buttons */
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dashboard-button:hover {
+    background-color: #0056b3;
+  }
+  @media (min-width: 768px) {
+    .dashboard-button {
+      width: 50%; /* Larger buttons for wider screens */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="dashboard-container">
+  <button class="dashboard-button" onclick="location.href='profile'">Profile</button>
+  <button class="dashboard-button" onclick="location.href='report'>Report</button>
+  <button class="dashboard-button" onclick="location.href='yourreports'">Your Reports</button>
+  <button class="dashboard-button" onclick="logoutUser()">Logout</button>
+
+<script>
+  function logoutUser() {
+    alert('Logged out of your account');
+    window.location.href = 'login.html'; // Redirect to the login page
+  }
+</script>
+
+</div>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4e6cc; /* Light brown background color */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4caf50; /* Green button color */
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Your Dashboard</h1>
+    <div>
+        <a href="{% url 'profile' %}" class="btn">Profile</a>
+        <a href="{% url 'report' %}" class="btn">Report Incident</a>
+        <a href="{% url 'yourreports' %}" class="btn">Your Reports</a>
+        <a href="{% url 'logout' %}" class="btn">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>
